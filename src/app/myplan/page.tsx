@@ -112,7 +112,7 @@ const MyPlanPage = () => {
             (activeTab === "plan")?
             (
                  (plans.length>0) ? 
-            <PlanCards></PlanCards>
+            plans.map(plan => <PlanCards key={plan.id} plan={plan}></PlanCards>)
             :
             <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">
@@ -135,7 +135,7 @@ const MyPlanPage = () => {
             :
            (
                  (saved.length>0) ? 
-            <SavedCards></SavedCards>
+            plans.map(plan => <SavedCards key={plan.id} plan={plan}></SavedCards>)
             :
             <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">

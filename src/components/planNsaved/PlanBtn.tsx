@@ -22,7 +22,7 @@ const PlanBtn = ({work} : {work : MainType}) => {
             <button 
                 className="bg-lime-400 text-black px-6 py-3 rounded-xl font-semibold"
                 onClick={()=> {
-                    if(!plans.includes(work)){
+                    if(!plans.some((plan) => plan.id === work.id)){
                         setPlans([...plans,work]);
                         toast(`${work.name} is added successfully`)
                     }
