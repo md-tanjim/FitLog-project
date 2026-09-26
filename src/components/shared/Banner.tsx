@@ -23,7 +23,8 @@ const Banner = () => {
         </p>
 
         <button className="mx-auto md:mx-0 rounded-lg bg-lime-400 px-6 py-3 font-bold text-black hover:bg-lime-300">
-          BROWSE WORKOUTS
+          
+          <a href="#library-section">BROWSE WORKOUTS</a>
         </button>
       </div>
 

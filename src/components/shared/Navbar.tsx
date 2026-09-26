@@ -31,7 +31,9 @@ const Navbar = () => {
       height={30}
       alt="FitLog Logo"
     />
-    <h1 className="font-bold text-xl">FITLOG</h1>
+    <h1 className="font-bold text-xl">
+      <Link href="/">FITLOG</Link>
+      </h1>
   </div>
 
  
