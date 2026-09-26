@@ -3,6 +3,7 @@
 import PlanCards from '@/components/planNsaved/PlanCards';
 import SavedCards from '@/components/planNsaved/SavedCards';
 import { WorkContext } from '@/context/WorkContext';
+import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 
 const MyPlanPage = () => {
@@ -132,7 +133,7 @@ console.log(plans.map(plan => plan.duration), "is map working")
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">
 
                 <h3 className="mb-2 text-xl font-black tracking-wider uppercase text-white sm:text-2xl">
-                    no plans yet
+                    NOTHING HERE YET
                 </h3>
 
 
@@ -141,8 +142,11 @@ console.log(plans.map(plan => plan.duration), "is map working")
                 </p>
 
 
-                <button className="rounded-full bg-lime-400 px-6 py-2.5 text-sm font-black text-black">
-                    Go to workouts
+                <button 
+                
+                className="rounded-full bg-lime-400 px-6 py-2.5 text-sm font-black text-black">
+                    
+                    <Link href="/">Go to workouts</Link>
                 </button>
             </div>
             )

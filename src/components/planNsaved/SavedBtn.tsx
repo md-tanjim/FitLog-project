@@ -24,7 +24,7 @@ const SavedBtn = ({work} : {work : MainType}) => {
                 onClick={()=> {
                     if(!saved.some((plan) => plan.id === work.id)){
                         setSaved([...saved,work]);
-                        toast(`${work.name} is added successfully`)
+                        toast(`${work.name} Added to saved`)
                     }
                     else {
                         toast.error(`${work.name} is already added`, {

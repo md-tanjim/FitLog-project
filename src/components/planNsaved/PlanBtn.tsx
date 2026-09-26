@@ -24,7 +24,7 @@ const PlanBtn = ({work} : {work : MainType}) => {
                 onClick={()=> {
                     if(!plans.some((plan) => plan.id === work.id)){
                         setPlans([...plans,work]);
-                        toast(`${work.name} is added successfully`)
+                        toast(`${work.name} Added to today's plan`)
                     }
                     else {
                         toast.error(`${work.name} is already added`, {
