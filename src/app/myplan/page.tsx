@@ -11,6 +11,8 @@ const MyPlanPage = () => {
 
     const [activeTab, setActiveTab] = useState("plan");
 
+
+
     const [sortby, setSortby] = useState<"duration" | "cal" | "rating">("duration")
 
     const { plans, saved } = useContext(WorkContext)!
@@ -60,21 +62,38 @@ const MyPlanPage = () => {
                     <div className="text-center text-white">
                         <p className="text-sm text-gray-400">Exercises</p>
                         <h1 className="text-3xl md:text-4xl font-bold text-[#CCFF00]">
-                            {plans.length}
+                            {
+                            (activeTab === "plan")? plans.length : saved.length}
                         </h1>
                     </div>
 
                     <div className="text-center text-white">
                         <p className="text-sm text-gray-400">Minutes</p>
                         <h1 className="text-3xl md:text-4xl font-bold">
-                            {plans.reduce((acc, plan) => acc + plan.duration, 0)}
+
+
+                            {
+                            (activeTab === "plan") ? 
+                            plans.reduce((acc, plan) => acc + plan.duration, 0)
+                            :
+                            saved.reduce((acc, plan) => acc + plan.duration, 0)
+                            }
+
+                            
                         </h1>
                     </div>
 
                     <div className="text-center text-white">
                         <p className="text-sm text-gray-400">Calories</p>
                         <h1 className="text-3xl md:text-4xl font-bold">
-                            {plans.reduce((acc, plan) => acc + plan.caloriesBurned, 0)}
+                            {
+                            
+                            (activeTab === "plan") ? 
+                            plans.reduce((acc, plan) => acc + plan.caloriesBurned, 0)
+                            :
+                            saved.reduce((acc, plan) => acc + plan.caloriesBurned, 0)
+                            
+                            }
                         </h1>
                     </div>
 
