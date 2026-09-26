@@ -4,11 +4,11 @@ import { MainType } from '@/types/mainType';
 
 
 
-
+//https://api.abcz.workers.dev/api/fitlog
 
  export const getWorks = async () : Promise<MainType[]> =>{
     try{
-        const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        const res = await fetch('https://api.api-store.workers.dev/api/fitlog');
     const data = await res.json();
     return data;
     }
