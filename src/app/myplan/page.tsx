@@ -3,6 +3,7 @@
 import PlanCards from '@/components/planNsaved/PlanCards';
 import SavedCards from '@/components/planNsaved/SavedCards';
 import { WorkContext } from '@/context/WorkContext';
+import { MainType } from '@/types/mainType';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 
@@ -10,9 +11,38 @@ const MyPlanPage = () => {
 
     const [activeTab, setActiveTab] = useState("plan");
 
-    const { plans, saved } = useContext(WorkContext)
-console.log(plans.map(plan => plan.duration), "is map working")
+    const [sortby, setSortby] = useState<"duration" | "cal" | "rating">("duration")
 
+    const { plans, saved } = useContext(WorkContext)
+
+   const sortPlansNsaved = (plansOrSaved : MainType[])=>{
+        const sortedResult = [...plansOrSaved];
+        if(sortby === "duration"){
+            sortedResult.sort((a,b)=> b.duration - a.duration);
+        }
+        else if(sortby === "rating"){
+            sortedResult.sort((a,b)=> b.rating - a.rating);
+        }
+        else if(sortby === "cal"){
+            sortedResult.sort((a,b)=> b.caloriesBurned - a.caloriesBurned);
+        }
+
+
+        return sortedResult;
+    };
+
+
+    const sortedPlans = sortPlansNsaved(plans)
+    const sortedSaved = sortPlansNsaved(saved)
+
+
+
+
+// console.log(plans.map(plan => plan.duration), "is map working")
+// console.log(sortby, " sorting working")
+
+console.log(sortedPlans, "its sorte plans")
+console.log(sortedSaved, "its sorte saved")
     return (
 
         <div className=''>
@@ -77,10 +107,12 @@ console.log(plans.map(plan => plan.duration), "is map working")
 
                     <div className=' flex gap-4 items-center  w-[250px]'>
                         <p className='text-gray-400  '>sort by</p>
-                        <select defaultValue="Medium" className="select select-md max-w-[98px]  bg-[#13161D] text-white ">
-                            <option>Duration</option>
-                            <option>Calories</option>
-                            <option>Rating</option>
+                        <select value={sortby} 
+                                onChange={(e)=> setSortby(e.target.value as "duration" | "cal" | "rating")}
+                        className="select select-md max-w-[98px]  bg-[#13161D] text-white ">
+                            <option value={"duration"}>Duration</option>
+                            <option value={"cal"}>Calories</option>
+                            <option value={"rating"}>Rating</option>
                         </select>
                     </div>
 
@@ -97,37 +129,13 @@ console.log(plans.map(plan => plan.duration), "is map working")
             </div>
 
 
-        {/* {
-
-            (plans.length>0) ? 
-            <div>hello</div>
-            :
-            <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
-            bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">
-
-                <h3 className="mb-2 text-xl font-black tracking-wider uppercase text-white sm:text-2xl">
-                    Nothing here yet
-                </h3>
-
-
-                <p className="mb-6 max-w-md text-sm font-medium text-slate-400">
-                    Browse the library and add a lift to get today moving.
-                </p>
-
-
-                <button className="rounded-full bg-lime-400 px-6 py-2.5 text-sm font-black text-black">
-                    Go to workouts
-                </button>
-            </div>
-            
-        } */}
 
 
         {
             (activeTab === "plan")?
             (
                  (plans.length>0) ? 
-            plans.map(plan => <PlanCards key={plan.id} plan={plan}></PlanCards>)
+            sortedPlans.map(plan => <PlanCards key={plan.id} plan={plan}></PlanCards>)
             :
             <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">
@@ -153,7 +161,7 @@ console.log(plans.map(plan => plan.duration), "is map working")
             :
            (
                  (saved.length>0) ? 
-            saved.map(plan => <SavedCards key={plan.id} plan={plan}></SavedCards>)
+            sortedSaved.map(plan => <SavedCards key={plan.id} plan={plan}></SavedCards>)
             :
             <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">
