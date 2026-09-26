@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="border-b border-[#ffffff1a]">
          <nav className="h-20 px-4 md:px-8 flex items-center justify-between bg-[#05070d] text-white container mx-auto">
   
-  {/* Logo */}
+  
   <div className="flex items-center gap-3">
     <Image
       src={logo}
@@ -34,7 +34,7 @@ const Navbar = () => {
     <h1 className="font-bold text-xl">FITLOG</h1>
   </div>
 
-  {/* Hidden on mobile */}
+ 
   <div className="hidden md:flex gap-8">
     <button
       onClick={() => setActiveTab("work")}
@@ -60,9 +60,11 @@ const Navbar = () => {
     </button>
   </div>
 
-  {/* Always visible */}
+
   <div className="flex gap-3 md:gap-6">
-    <button className="flex items-center gap-2">
+    <button 
+    onClick={() => setActiveTab("plan")}
+    className="flex items-center gap-2">
       
       <Link href="/myplan">Plan</Link>
       <span className="w-5 h-5 rounded-full bg-lime-400 text-black text-xs flex items-center justify-center">
@@ -70,7 +72,9 @@ const Navbar = () => {
       </span>
     </button>
 
-    <button className="flex items-center gap-2 text-gray-400">
+    <button 
+    onClick={() => setActiveTab("plan")}  
+    className="flex items-center gap-2 text-gray-400">
       
       <Link href="/myplan">Saved</Link>
       <span className="w-5 h-5 rounded-full border border-gray-600 text-xs flex items-center justify-center">

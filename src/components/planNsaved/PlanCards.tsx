@@ -4,6 +4,9 @@ import { MainType } from '@/types/mainType';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
+import { FaRegStar } from 'react-icons/fa';
+import { IoMdTime } from 'react-icons/io';
+import { RiFireFill } from 'react-icons/ri';
 // import { LuClock3 } from 'react-icons/lu';
 import { RxCross2 } from 'react-icons/rx';
 import { Bounce, toast } from 'react-toastify';
@@ -42,17 +45,17 @@ const PlanCards = ({plan} : MainType) => {
 
           <div className="mt-2 flex items-center gap-4 text-gray-300">
             <span className="flex items-center gap-1">
-              {/* <LuClock3 size={16} className="text-lime-400" /> */}
+              <IoMdTime />
               {plan.duration} min
             </span>
 
             <span className="flex items-center gap-1">
-              
+               <RiFireFill />
               {plan.caloriesBurned} kcal
             </span>
 
             <span className="flex items-center gap-1">
-             
+               <FaRegStar />
               {plan.rating}
             </span>
           </div>

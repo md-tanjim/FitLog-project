@@ -10,7 +10,7 @@ const MyPlanPage = () => {
     const [activeTab, setActiveTab] = useState("plan");
 
     const { plans, saved } = useContext(WorkContext)
-
+console.log(plans.map(plan => plan.duration), "is map working")
 
     return (
 
@@ -26,16 +26,30 @@ const MyPlanPage = () => {
 
                 <div className='flex  justify-between items-center  rounded-xl  border border-[#ffffff1a] h-30 bg-[#13161D] '>
                     <div className='ml-5 text-white'>
-                        <p>Exercises</p>
-                        <h1 className='text-4xl font-bold text-[#CCFF00]'>2</h1>
+                        <p>Exercises     </p>
+                        <h1 className='text-4xl font-bold text-[#CCFF00]'>{plans.length}</h1>
                     </div>
                     <div className='text-white'>
                         <p>Minutes</p>
-                        <h1 className='text-4xl font-bold'>23</h1>
+                        <h1 className='text-4xl font-bold'>
+                            {
+                                
+                                plans.reduce((acc,plan) => {
+                                    return plan.duration+acc
+                                },0)
+                            }
+                        </h1>
                     </div>
                     <div className='mr-40 text-white'>
                         <p>Calories</p>
-                        <h1 className='text-4xl font-bold'>2</h1>
+                        <h1 className='text-4xl font-bold'>
+                            {
+                                
+                                plans.reduce((acc,plan) => {
+                                    return plan.caloriesBurned+acc
+                                },0)
+                            }
+                        </h1>
                     </div>
 
                 </div>
@@ -135,7 +149,7 @@ const MyPlanPage = () => {
             :
            (
                  (saved.length>0) ? 
-            plans.map(plan => <SavedCards key={plan.id} plan={plan}></SavedCards>)
+            saved.map(plan => <SavedCards key={plan.id} plan={plan}></SavedCards>)
             :
             <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border-2 border-dotted border-gray-600
             bg-[#15171d] px-6 py-12 text-center shadow-xl mx-auto w-full container">

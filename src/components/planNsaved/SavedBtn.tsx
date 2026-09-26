@@ -12,7 +12,7 @@ const SavedBtn = ({work} : {work : MainType}) => {
 
     console.log("contesxt triggered", saved);
 
-    const handlesaved = ()=> {
+    const handlePlans = ()=> {
       console.log("plan triggered", work);
       setSaved([...saved, work]);
     }
@@ -20,9 +20,9 @@ const SavedBtn = ({work} : {work : MainType}) => {
     return (
         <div>
             <button 
-                className="border border-[#ffffff1a] px-6 py-3 rounded-xl"
+                className="bg-lime-400 text-black px-6 py-3 rounded-xl font-semibold"
                 onClick={()=> {
-                    if(!saved.includes(work)){
+                    if(!saved.some((plan) => plan.id === work.id)){
                         setSaved([...saved,work]);
                         toast(`${work.name} is added successfully`)
                     }
@@ -41,7 +41,7 @@ const SavedBtn = ({work} : {work : MainType}) => {
                     }
                 }}
             >
-                Save for later
+                save for later
             </button>
         </div>
     );

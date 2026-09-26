@@ -4,7 +4,10 @@ import { MainType } from '@/types/mainType';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
-
+import { FaRegStar } from 'react-icons/fa';
+import { IoMdTime } from 'react-icons/io';
+import { RiFireFill } from 'react-icons/ri';
+// import { LuClock3 } from 'react-icons/lu';
 import { RxCross2 } from 'react-icons/rx';
 import { Bounce, toast } from 'react-toastify';
 
@@ -12,9 +15,9 @@ const SavedCards = ({plan} : MainType) => {
 
     const [done, setDone] = useState(false);
 
-    const {plans, setPlans} = useContext(WorkContext);
+    const {saved, setSaved} = useContext(WorkContext);
 
-    console.log(plan, "plan from cards")
+    console.log(saved, "plan from saved cards")
 
     
     return (
@@ -42,17 +45,17 @@ const SavedCards = ({plan} : MainType) => {
 
           <div className="mt-2 flex items-center gap-4 text-gray-300">
             <span className="flex items-center gap-1">
-              {/* <LuClock3 size={16} className="text-lime-400" /> */}
+               <IoMdTime />
               {plan.duration} min
             </span>
 
             <span className="flex items-center gap-1">
-              
+               <RiFireFill />
               {plan.caloriesBurned} kcal
             </span>
 
             <span className="flex items-center gap-1">
-             
+               <FaRegStar />
               {plan.rating}
             </span>
           </div>
@@ -66,20 +69,12 @@ const SavedCards = ({plan} : MainType) => {
           <Link href={`/workdetails/${plan.id}`}>View Details</Link>
         </button>
 
-        <button
-          onClick={() => setDone(true)}
-          className={`rounded-full px-6 py-3 font-semibold transition 
-            ${done? "bg-green-700 text-white"
-              : "bg-lime-400 text-black"
-          }`}
-        >
-          {done ? "Already Done" : "✓ Mark as Done"}
-        </button>
+        
 
         <button className="text-gray-400 transition hover:text-white"
         onClick={() => {
-                        const newStack = plans.filter((s) => s != plan);
-                        setPlans(newStack)
+                        const newStack = saved.filter((s) => s != plan);
+                        setSaved(newStack)
                         
                         toast.success(`${plan.name} is removed`, {
 position: "top-right",
