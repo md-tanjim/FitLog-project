@@ -10,7 +10,7 @@ import { MainType } from '@/types/mainType';
 
 const Navbar = () => {
 
-  const {plans ,saved} = useContext(WorkContext)
+  const {plans ,saved} = useContext(WorkContext)!
 
     const [activeTab, setActiveTab] = useState("work");
 

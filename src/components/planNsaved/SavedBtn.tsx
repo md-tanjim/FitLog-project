@@ -8,7 +8,7 @@ import { Bounce, toast } from 'react-toastify';
 
 const SavedBtn = ({work} : {work : MainType}) => {
 
-    const {saved, setSaved} = useContext(WorkContext)
+    const {saved, setSaved} = useContext(WorkContext)!
 
     console.log("contesxt triggered", saved);
 

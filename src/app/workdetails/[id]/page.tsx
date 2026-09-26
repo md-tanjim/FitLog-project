@@ -93,7 +93,7 @@ const WorkIdPage = async ({ params }: { params: Promise<{ id: number }> }) => {
 
 
             <div className="flex flex-wrap gap-2 mb-5">
-              {work.muscleGroups.map((group) => (
+              {work.muscleGroups.map((group : string) => (
                 <span
                   key={group}
                   className="bg-lime-400 text-black px-3 py-1 rounded-full text-sm font-bold"
@@ -150,7 +150,7 @@ const WorkIdPage = async ({ params }: { params: Promise<{ id: number }> }) => {
 
             <ol className="space-y-2 text-gray-400 mb-8">
               {
-                work.instructions.map((instruction, index) => (
+                work.instructions.map((instruction :  string, index : string) => (
                   <li key={index}>
                     {index + 1}. {instruction}
                   </li>

@@ -8,14 +8,14 @@ import { Bounce, toast } from 'react-toastify';
 
 const PlanBtn = ({work} : {work : MainType}) => {
 
-    const {plans, setPlans} = useContext(WorkContext)
+    const {plans, setPlans} = useContext(WorkContext)!
 
     console.log("contesxt triggered", plans);
 
-    const handlePlans = ()=> {
-      console.log("plan triggered", work);
-      setPlans([...plans, work]);
-    }
+    // const handlePlans = ()=> {
+    //   console.log("plan triggered", work);
+    //   setPlans([...plans, work]);
+    // }
     
     return (
         <div>

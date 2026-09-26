@@ -11,11 +11,11 @@ import { RiFireFill } from 'react-icons/ri';
 import { RxCross2 } from 'react-icons/rx';
 import { Bounce, toast } from 'react-toastify';
 
-const PlanCards = ({plan} : MainType) => {
+const PlanCards = ({plan} : {plan : MainType}) => {
 
     const [done, setDone] = useState(false);
 
-    const {plans, setPlans} = useContext(WorkContext);
+    const {plans, setPlans} = useContext(WorkContext)!;
 
     console.log(plan, "plan from cards")
 

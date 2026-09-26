@@ -13,7 +13,7 @@ const MyPlanPage = () => {
 
     const [sortby, setSortby] = useState<"duration" | "cal" | "rating">("duration")
 
-    const { plans, saved } = useContext(WorkContext)
+    const { plans, saved } = useContext(WorkContext)!
 
     const sortPlansNsaved = (plansOrSaved: MainType[]) => {
         const sortedResult = [...plansOrSaved];
